@@ -29,10 +29,10 @@ public class PasswordForceCalculator {
     public static int calculatePasswordForce(String password){
         int forcePasswordPoints=0;
 
-        forcePasswordPoints+= calculateLength(password);
-        forcePasswordPoints+= calculateCase(password);
-        forcePasswordPoints+= calculateDigit(password);
-        forcePasswordPoints+= calculateSymbol(password);
+        forcePasswordPoints+= calculateLengthPoints(password);
+        forcePasswordPoints+= calculateCaseLettersPoints(password);
+        forcePasswordPoints+= calculateDigitPresencePoints(password);
+        forcePasswordPoints+= calculateSymbolPresencePoints(password);
 
         if(forcePasswordPoints==9){
             forcePasswordPoints++;
@@ -46,7 +46,7 @@ public class PasswordForceCalculator {
      * @param password contaseña
      * @return puntos asignados
      */
-    private static int calculateLength(String password){
+    private static int calculateLengthPoints(String password){
         int passwordLength = password.length();
         if(passwordLength> 12){
             return 3;
@@ -64,7 +64,7 @@ public class PasswordForceCalculator {
      * @param password contaseña
      * @return puntos asignados
      */
-    private static int calculateCase(String password){
+    private static int calculateCaseLettersPoints(String password){
         int forcePasswordPoints =0;
         boolean hasLowerCase = password.matches(".*[a-z].*");
         boolean hasUpperCase = password.matches(".*[A-Z].*");
@@ -82,7 +82,7 @@ public class PasswordForceCalculator {
      * @param password contaseña
      * @return puntos asignados
      */
-    private static int calculateDigit(String password){
+    private static int calculateDigitPresencePoints(String password){
         if(password.matches(".*\\d.*")){
             return 1;
         }
@@ -94,7 +94,7 @@ public class PasswordForceCalculator {
      * @param password contaseña
      * @return puntos asignados
      */
-    private static int calculateSymbol(String password){
+    private static int calculateSymbolPresencePoints(String password){
         if(password.matches(".*[^a-zA-Z\\d].*")){
             return 2;
         }
