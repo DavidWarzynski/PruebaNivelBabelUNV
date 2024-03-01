@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class PasswordForceCalculator {
     public final static int FORCE_PASSWORD_POINTS_THRESHOLD = 8;
 
     public static void main(String[] args) {
